@@ -1,13 +1,16 @@
 /* global process */
 
-import { MDCChipSet } from '@material/chips/chip-set';
+import { MDCChipSet } from '@material/chips';
 import { MDCRipple } from '@material/ripple';
 import * as WebFont from 'webfontloader';
 import './index.scss';
 
-MDCChipSet.attachTo(document.querySelector('.mdc-chip-set'));
-MDCRipple.attachTo(document.querySelector('.mdc-fab'));
-document.querySelector('.mdc-fab').classList.remove('mdc-fab--exited');
+new MDCChipSet(document.querySelector('.mdc-evolution-chip-set'));
+new MDCRipple(document.querySelector('.mdc-fab'));
+
+setTimeout(() => {
+  document.querySelector('.mdc-fab').classList.remove('mdc-fab--exited');
+}, 1000);
 
 WebFont.load({
   google: {

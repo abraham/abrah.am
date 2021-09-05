@@ -1,5 +1,7 @@
-@use '@material/chips/deprecated/mdc-chips';
-@use '@material/fab/mdc-fab';
+@use '@material/chips/styles';
+@use '@material/fab';
+
+@include fab.core-styles;
 
 h2 {
   margin-left: 12px;
@@ -88,12 +90,6 @@ header h1 {
 .mdc-fab,
 .mdc-fab__label {
   transition: all 200ms ease-in-out;
-}
-
-.mdc-fab:not(.mdc-fab--extended) {
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 56px;
 }
 
 .mdc-fab .mdc-fab__label {
