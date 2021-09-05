@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import { InjectManifest } from 'workbox-webpack-plugin';
+import data from './src/data.json';
 
 const production = process.env.NODE_ENV === 'production';
 const mode = production ? 'production' : 'development';
@@ -42,7 +43,8 @@ module.exports = {
       excludeAssets: [/style-.*\.js/],
       filename: 'index.html',
       inlineSource: '.(css)$',
-      template: path.resolve(__dirname, 'src', 'index.html'),
+      template: path.resolve(__dirname, 'src', 'index.ejs'),
+      templateParameters: data,
     }),
     new InjectManifest({
       swSrc: path.resolve(__dirname, 'src', 'sw.ts'),
