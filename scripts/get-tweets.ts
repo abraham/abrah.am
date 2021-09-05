@@ -11,7 +11,8 @@ if (!consumerKey || !consumerSecret) {
   throw new Error('Missing CONSUMER_KEY/CONSUMER_SECRET');
 }
 
-const filePath = path.resolve('./tweets.json');
+const filePath = path.resolve('./src/data.json');
+let data = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }));
 const T = new Twit({
   consumer_key: consumerKey,
   consumer_secret: consumerSecret,
@@ -30,6 +31,7 @@ T.get('statuses/user_timeline', params, (error, tweets) => {
   if (error) {
     throw new Error(error);
   } else {
-    fs.writeFileSync(filePath, JSON.stringify(tweets.slice(0, 6), null, 2));
+    data.tweets = tweets.slice(0, 6);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
   }
 });
