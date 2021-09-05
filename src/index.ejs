@@ -98,20 +98,27 @@
         <h2>Profiles</h2>
 
         <div class="grid">
-          <div class="mdc-chip-set">
-
-            <% links.forEach(link => { %>
-              <a
-                class="mdc-chip profile-chip"
-                rel="noopener"
-                <% if (link.sameAs) { %>itemprop="sameAs"<% } %>
-                href="<%- link.url %>">
-                <i class="material-icons mdc-chip__icon mdc-chip__icon--leading"><%- link.icon %></i>
-                <span class="mdc-chip__text"><%- link.text %></span>
-              </a>
-            <% }); %>
-
-          </div>
+          <span class="mdc-evolution-chip-set" role="grid">
+            <span class="mdc-evolution-chip-set__chips" role="presentation">
+              <% links.forEach((link, index) => { %>
+                <span class="mdc-evolution-chip" role="row" id="c<%- index %>">
+                  <span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary" role="gridcell">
+                    <a
+                      class="mdc-evolution-chip__action mdc-evolution-chip__action--primary"
+                      href="<%- link.url %>"
+                      <% if (link.sameAs) { %>itemprop="sameAs"<% } %>
+                      rel="noopener">
+                      <span class="mdc-evolution-chip__ripple mdc-evolution-chip__ripple--primary"></span>
+                      <span class="mdc-evolution-chip__graphic">
+                        <span class="mdc-evolution-chip__icon mdc-evolution-chip__icon--primary material-icons"><%- link.icon %></span>
+                      </span>
+                      <span class="mdc-evolution-chip__text-label"><%- link.text %></span>
+                    </a>
+                  </span>
+                </span>
+              <% }); %>
+            </span>
+          </span>
         </div>
       </div>
 
