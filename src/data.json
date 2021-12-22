@@ -25,6 +25,12 @@
       "text": "npm"
     },
     {
+      "url": "https://g.dev/abraham",
+      "sameAs": true,
+      "icon": "code",
+      "text": "Google Developers"
+    },
+    {
       "url": "https://developers.google.com/experts/people/abraham-williams",
       "sameAs": true,
       "icon": "code",
