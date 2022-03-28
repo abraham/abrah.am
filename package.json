@@ -42,7 +42,7 @@
     "github-repository": "0.4.0",
     "node-package": "1.4.0",
     "twit": "2.2.11",
-    "twitter-status": "0.6.0",
+    "twitter-status": "0.7.0",
     "webfontloader": "1.6.28",
     "workbox-cacheable-response": "6.5.1",
     "workbox-core": "6.5.1",
