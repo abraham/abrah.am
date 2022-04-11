@@ -1,9 +1,9 @@
 name: Main
 on: push
-env:
-  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 jobs:
   test:
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     runs-on: ubuntu-latest
     name: Test
     steps:
