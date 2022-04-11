@@ -3,10 +3,13 @@ on: pull_request
 
 jobs:
   deploy_preview:
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
+      - run: npx firebase use abraham-d3850
       - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
