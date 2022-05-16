@@ -37,7 +37,7 @@
     "@babel/runtime": "7.17.9",
     "@material/chips": "14.0.0",
     "@material/fab": "14.0.0",
-    "@material/ripple": "13.0.0",
+    "@material/ripple": "14.0.0",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "github-repository": "0.4.0",
     "node-package": "1.4.0",
