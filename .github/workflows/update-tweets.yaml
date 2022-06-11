@@ -2,6 +2,9 @@ name: Update tweets
 on:
   schedule:
     - cron: '0 * * * *'
+  push:
+    branches:
+      - main
 env:
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
