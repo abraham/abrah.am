@@ -22,8 +22,7 @@ node-package {
   width: 100%;
 }
 
-a,
-.profile-chip i {
+a {
   color: #000;
 }
 
@@ -31,10 +30,26 @@ header h1 {
   text-align: center;
 }
 
-.profile-chip {
+.mdc-evolution-chip {
   background-color: #fff;
   border: 1px #000 solid;
+  border-radius: 8px;
   color: #000;
+}
+
+.mdc-evolution-chip .mdc-evolution-chip__ripple {
+  border-radius: 8px;
+}
+
+.mdc-evolution-chip .mdc-evolution-chip__graphic {
+  height: 18px;
+  padding-right: 8px;
+  width: 18px;
+}
+
+.mdc-evolution-chip .mdc-evolution-chip__action--primary {
+  padding-left: 8px;
+  padding-right: 16px;
 }
 
 .grid {
