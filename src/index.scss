@@ -72,14 +72,22 @@ header h1 {
 }
 
 .mdc-fab.mdc-fab--extended {
-  border-radius: 28px;
+  border-radius: 16px;
   height: 56px;
   width: 179px;
+}
+
+.mdc-fab--extended .mdc-fab__ripple {
+  border-radius: 16px;
 }
 
 .mdc-fab.mdc-fab--extended .mdc-fab__icon {
   padding-left: 8px;
   width: 56px;
+}
+
+.mdc-fab:not(.mdc-fab--extended) .mdc-fab__ripple {
+  border-radius: 16px;
 }
 
 .mdc-fab {
@@ -90,6 +98,10 @@ header h1 {
 .mdc-fab,
 .mdc-fab__label {
   transition: all 200ms ease-in-out;
+}
+
+.mdc-fab:not(.mdc-fab--extended) {
+  border-radius: 16px;
 }
 
 .mdc-fab .mdc-fab__label {
