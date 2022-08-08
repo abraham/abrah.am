@@ -63,7 +63,7 @@
     "@types/webcomponents.js": "0.6.37",
     "@types/webfontloader": "1.6.34",
     "@types/webpack": "5.28.0",
-    "@typescript-eslint/eslint-plugin": "5.30.5",
+    "@typescript-eslint/eslint-plugin": "5.32.0",
     "@typescript-eslint/parser": "5.30.4",
     "babel-loader": "8.2.5",
     "concurrently": "7.2.2",
