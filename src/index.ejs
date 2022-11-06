@@ -106,7 +106,8 @@
                       class="mdc-evolution-chip__action mdc-evolution-chip__action--primary"
                       href="<%- link.url %>"
                       <% if (link.sameAs) { %>itemprop="sameAs"<% } %>
-                      rel="noopener">
+                      <% if (link.relMe) { %>rel="noopener me"<% } else { %>rel="noopener"<% } %>
+                      >
                       <span class="mdc-evolution-chip__ripple mdc-evolution-chip__ripple--primary"></span>
                       <span class="mdc-evolution-chip__graphic">
                         <span class="mdc-evolution-chip__icon mdc-evolution-chip__icon--primary material-icons"><%- link.icon %></span>
