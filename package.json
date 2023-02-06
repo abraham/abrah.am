@@ -65,7 +65,7 @@
     "@types/webpack": "5.28.0",
     "@typescript-eslint/eslint-plugin": "5.50.0",
     "@typescript-eslint/parser": "5.49.0",
-    "babel-loader": "9.1.0",
+    "babel-loader": "9.1.2",
     "concurrently": "7.6.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.3",
