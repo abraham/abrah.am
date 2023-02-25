@@ -1,18 +1,37 @@
 {
   "links": [
     {
-      "url": "https://twitter.com/abraham",
-      "sameAs": true,
-      "relMe": true,
-      "icon": "person",
-      "text": "Twitter"
-    },
-    {
       "url": "https://indieweb.social/@abraham",
       "sameAs": true,
       "relMe": true,
       "icon": "person",
       "text": "Mastodon"
+    },
+    {
+      "url": "https://github.com/abraham",
+      "sameAs": true,
+      "relMe": true,
+      "icon": "code",
+      "text": "GitHub"
+    },
+    {
+      "url": "https://slides.today",
+      "icon": "personal_video",
+      "text": "Presentations"
+    },
+    {
+      "url": "http://instagram.com/abrahamwilliams",
+      "sameAs": true,
+      "relMe": true,
+      "icon": "photo",
+      "text": "Instagram"
+    },
+    {
+      "url": "https://twitter.com/abraham",
+      "sameAs": true,
+      "relMe": true,
+      "icon": "person",
+      "text": "Twitter"
     },
     {
       "url": "https://www.facebook.com/abrahamwilliams",
@@ -22,11 +41,11 @@
       "text": "Facebook"
     },
     {
-      "url": "https://github.com/abraham",
+      "url": "https://www.linkedin.com/in/afivem/",
       "sameAs": true,
       "relMe": true,
-      "icon": "code",
-      "text": "GitHub"
+      "icon": "person",
+      "text": "LinkedIn"
     },
     {
       "url": "https://www.npmjs.com/~abraham",
@@ -71,18 +90,6 @@
       "text": "CodePen"
     },
     {
-      "url": "https://slides.today",
-      "icon": "personal_video",
-      "text": "Presentations"
-    },
-    {
-      "url": "http://instagram.com/abrahamwilliams",
-      "sameAs": true,
-      "relMe": true,
-      "icon": "photo",
-      "text": "Instagram"
-    },
-    {
       "url": "https://www.youtube.com/@abrahamwilliams",
       "sameAs": true,
       "relMe": true,
@@ -94,7 +101,7 @@
       "sameAs": true,
       "relMe": true,
       "icon": "attach_money",
-      "text": "Square Cash"
+      "text": "Cash"
     },
     {
       "url": "https://blog.abrah.am",
