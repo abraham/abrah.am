@@ -4,6 +4,7 @@ jobs:
   test:
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
     runs-on: ubuntu-latest
     name: Test
     steps:
