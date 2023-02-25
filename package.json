@@ -15,7 +15,7 @@
   },
   "engines": {
     "node": "18",
-    "npm": "8"
+    "npm": "9"
   },
   "scripts": {
     "build": "npm run clear && NODE_ENV=production webpack",
