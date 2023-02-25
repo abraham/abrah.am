@@ -11,7 +11,7 @@ if (!consumerKey || !consumerSecret) {
   throw new Error('Missing CONSUMER_KEY/CONSUMER_SECRET');
 }
 
-const filePath = path.resolve('./src/data.json');
+const filePath = path.resolve('./src/index.json');
 let data = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }));
 const T = new Twit({
   consumer_key: consumerKey,
