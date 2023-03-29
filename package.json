@@ -63,7 +63,7 @@
     "@types/node": "18.15.10",
     "@types/webcomponents.js": "0.6.37",
     "@types/webfontloader": "1.6.35",
-    "@types/webpack": "5.28.0",
+    "@types/webpack": "5.28.1",
     "@typescript-eslint/eslint-plugin": "5.55.0",
     "@typescript-eslint/parser": "5.56.0",
     "babel-loader": "9.1.2",
@@ -89,7 +89,7 @@
     "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
     "typescript": "5.0.2",
-    "webpack": "5.76.2",
+    "webpack": "5.76.3",
     "webpack-cli": "5.0.1",
     "workbox-webpack-plugin": "6.5.4"
   }
