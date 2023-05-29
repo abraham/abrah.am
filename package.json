@@ -34,7 +34,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "@babel/runtime": "7.21.0",
+    "@babel/runtime": "7.22.3",
     "@material/chips": "14.0.0",
     "@material/fab": "14.0.0",
     "@material/ripple": "14.0.0",
