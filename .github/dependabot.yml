@@ -16,3 +16,15 @@ updates:
       workbox:
         patterns:
           - 'workbox-*'
+      stylelint:
+        patterns:
+          - 'stylelint*'
+      eslint:
+        patterns:
+          - 'eslint*'
+      webpack:
+        patterns:
+          - '*webpack*'
+      material:
+        patterns:
+          - '@material/*'
