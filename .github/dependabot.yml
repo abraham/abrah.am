@@ -28,3 +28,6 @@ updates:
       material:
         patterns:
           - '@material/*'
+      typescript-eslint:
+        patterns:
+          - '@typescript-eslint/*'
