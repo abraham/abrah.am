@@ -16,3 +16,6 @@ updates:
       workbox:
         patterns:
           - 'workbox-*'
+      stylelint:
+        patterns:
+          - 'stylelint*'
