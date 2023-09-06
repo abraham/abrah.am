@@ -136,7 +136,7 @@ header h1 {
   padding-top: 48px;
 }
 
-@media all and (max-width: 960px) {
+@media all and (width <= 960px) {
   .maine {
     max-width: 640px;
   }
