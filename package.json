@@ -57,7 +57,7 @@
     "@babel/preset-env": "7.22.15",
     "@lhci/cli": "^0.11.0",
     "@types/copy-webpack-plugin": "10.1.0",
-    "@types/html-webpack-plugin": "3.2.6",
+    "@types/html-webpack-plugin": "3.2.7",
     "@types/material-components-web": "1.0.0",
     "@types/mini-css-extract-plugin": "2.5.1",
     "@types/node": "20.5.9",
