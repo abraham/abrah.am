@@ -62,7 +62,7 @@
     "@types/mini-css-extract-plugin": "2.5.1",
     "@types/node": "20.11.16",
     "@types/webcomponents.js": "0.6.37",
-    "@types/webfontloader": "1.6.35",
+    "@types/webfontloader": "1.6.38",
     "@types/webpack": "5.28.5",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "@typescript-eslint/parser": "6.20.0",
