@@ -25,13 +25,6 @@ function registerSW(): Promise<ServiceWorkerRegistration | void> {
   return Promise.resolve();
 }
 
-function importPollyfill(): Promise<void> {
-  if ('customElements' in window && 'attachShadow' in document.head) {
-    return Promise.resolve();
-  }
-  return import(/* webpackChunkName: 'polyfill' */ '@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce');
-}
-
 function importComponents(): Promise<any[]> {
   return Promise.all([
     import(/* webpackChunkName: 'components' */ 'node-package'),
@@ -72,7 +65,6 @@ const onScroll = () => {
 
 window.addEventListener('scroll', onScroll);
 
-importPollyfill()
-  .then(importComponents)
+importComponents()
   .then(registerSW)
   .catch((error: Error) => console.log(`Error importing dependancies or registering Service Worker: ${error}`));
