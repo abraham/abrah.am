@@ -22,12 +22,10 @@ updates:
       eslint:
         patterns:
           - 'eslint*'
+          - '@typescript-eslint/*'
       webpack:
         patterns:
           - '*webpack*'
       material:
         patterns:
           - '@material/*'
-      typescript-eslint:
-        patterns:
-          - '@typescript-eslint/*'
