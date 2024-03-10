@@ -70,122 +70,126 @@
         <h1>Hello, I'm <span itemprop="name">Abraham Williams</span></h1>
       </header>
 
-      <div class="row">
-        <p class="description" itemprop="description">
-          I'm an experienced developer, startup founder, and
-          <a rel="noopener" href="https://slides.today">international speaker</a>, who brings a broad range of skills to
-          my current role as a software engineer at <a rel="noopener" href="https://github.com/">GitHub</a>.
-          A top 1% contributor at
-          <a rel="noopener" href="https://stackoverflow.com/users/story/26406">Stack Overflow</a>
-          and formerly a developer relations engineer at <a rel="noopener" href="https://developers.google.com/">Google</a>, a senior developer at
-          <a rel="noopener" href="https://bendyworks.com/">Bendyworks</a>, an organizer of
-          <a rel="noopener" href="https://gdgmadison.com">GDG Madison</a>, and a
-          <a rel="noopener" href="https://developers.google.com/experts/people/abraham-williams"
-            >Google Developer Expert</a
-          >.
-        </p>
-      </div>
+      <main class="row">
+        <div>
+          <p class="description" itemprop="description">
+            I'm an experienced developer, startup founder, and
+            <a rel="noopener" href="https://slides.today">international speaker</a>, who brings a broad range of skills to
+            my current role as a software engineer at <a rel="noopener" href="https://github.com/">GitHub</a>.
+            A top 1% contributor at
+            <a rel="noopener" href="https://stackoverflow.com/users/story/26406">Stack Overflow</a>
+            and formerly a developer relations engineer at <a rel="noopener" href="https://developers.google.com/">Google</a>, a senior developer at
+            <a rel="noopener" href="https://bendyworks.com/">Bendyworks</a>, an organizer of
+            <a rel="noopener" href="https://gdgmadison.com">GDG Madison</a>, and a
+            <a rel="noopener" href="https://developers.google.com/experts/people/abraham-williams">
+              Google Developer Expert
+            </a>.
+          </p>
+        </div>
 
-      <div class="row">
-        <h2>Profiles</h2>
+        <div class="row">
+          <h2>Profiles</h2>
 
-        <div class="grid">
-          <span class="mdc-evolution-chip-set" role="grid">
-            <span class="mdc-evolution-chip-set__chips" role="presentation">
-              <% links.forEach((link, index) => { %>
-                <span class="mdc-evolution-chip" role="row" id="c<%- index %>">
-                  <span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary" role="gridcell">
-                    <a
-                      class="mdc-evolution-chip__action mdc-evolution-chip__action--primary"
-                      href="<%- link.url %>"
-                      <% if (link.sameAs) { %>itemprop="sameAs"<% } %>
-                      <% if (link.relMe) { %>rel="noopener me"<% } else { %>rel="noopener"<% } %>
-                      >
-                      <span class="mdc-evolution-chip__ripple mdc-evolution-chip__ripple--primary"></span>
-                      <span class="mdc-evolution-chip__graphic">
-                        <span class="mdc-evolution-chip__icon mdc-evolution-chip__icon--primary material-icons"><%- link.icon %></span>
-                      </span>
-                      <span class="mdc-evolution-chip__text-label"><%- link.text %></span>
-                    </a>
+          <div class="grid">
+            <span class="mdc-evolution-chip-set" role="grid">
+              <span class="mdc-evolution-chip-set__chips" role="presentation">
+                <% links.forEach((link, index) => { %>
+                  <span class="mdc-evolution-chip" role="row" id="c<%- index %>">
+                    <span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary" role="gridcell">
+                      <a
+                        class="mdc-evolution-chip__action mdc-evolution-chip__action--primary"
+                        href="<%- link.url %>"
+                        <% if (link.sameAs) { %>itemprop="sameAs"<% } %>
+                        <% if (link.relMe) { %>rel="noopener me"<% } else { %>rel="noopener"<% } %>
+                        >
+                        <span class="mdc-evolution-chip__ripple mdc-evolution-chip__ripple--primary"></span>
+                        <span class="mdc-evolution-chip__graphic">
+                          <span class="mdc-evolution-chip__icon mdc-evolution-chip__icon--primary material-icons"><%- link.icon %></span>
+                        </span>
+                        <span class="mdc-evolution-chip__text-label"><%- link.text %></span>
+                      </a>
+                    </span>
                   </span>
-                </span>
-              <% }); %>
+                <% }); %>
+              </span>
             </span>
-          </span>
-        </div>
-      </div>
-
-      <div class="row">
-        <h2>Recent tweets</h2>
-
-        <div class="grid">
-          <% tweets.forEach(tweet => { %>
-            <div class="grid-item">
-              <twitter-status status="<%- JSON.stringify(tweet) %>"></twitter-status>
-            </div>
-          <% }); %>
-
-          <% if (tweets.length === 0) { %>
-            <div class="grid-item">Unable to load tweets.</div>
-          <% } %>
-        </div>
-      </div>
-
-      <div class="row">
-        <h2>Projects</h2>
-
-        <div class="promo">
-          <p>
-            <a href="https://devfestwi.com">DevFest WI, an inclusive, positive conference for all technologists</a>
-          </p>
+          </div>
         </div>
 
-        <div class="promo">
-          <p>
-            <a href="https://bendyworks.com/blog/a-month-of-flutter">A month of Flutter blog series</a>
-          </p>
+        <div class="row">
+          <h2>Recent tweets</h2>
+
+          <div class="grid">
+            <% tweets.forEach(tweet => { %>
+              <div class="grid-item">
+                <twitter-status status="<%- JSON.stringify(tweet) %>"></twitter-status>
+              </div>
+            <% }); %>
+
+            <% if (tweets.length === 0) { %>
+              <div class="grid-item">Unable to load tweets.</div>
+            <% } %>
+          </div>
         </div>
 
-        <div class="promo">
-          <p>
-            <a href="https://pwa.ng/">Progressive Web Apps made ridiculously easy with Angular</a>
-          </p>
-        </div>
+        <div class="row">
+          <h2>Projects</h2>
 
-        <div class="grid">
-          <% nodePackages.forEach(package => { %>
-            <div class="grid-item">
-              <node-package name="<%- package.name %>" <% if (package.global) { %>global<% } %>></node-package>
-            </div>
-          <% }); %>
-        </div>
+          <div class="promo">
+            <p>
+              <a href="https://devfestwi.com">DevFest WI, an inclusive, positive conference for all technologists</a>
+            </p>
+          </div>
 
-        <div class="grid">
-          <% githubRepos.forEach(repo => { %>
-            <div class="grid-item">
-              <github-repository owner-repo="<%- repo.owner %>"></github-repository>
-            </div>
-          <% }); %>
-        </div>
+          <div class="promo">
+            <p>
+              <a href="https://bendyworks.com/blog/a-month-of-flutter">A month of Flutter blog series</a>
+            </p>
+          </div>
 
-      </div>
+          <div class="promo">
+            <p>
+              <a href="https://pwa.ng/">Progressive Web Apps made ridiculously easy with Angular</a>
+            </p>
+          </div>
+
+          <div class="grid">
+            <% nodePackages.forEach(package => { %>
+              <div class="grid-item">
+                <node-package name="<%- package.name %>" <% if (package.global) { %>global<% } %>></node-package>
+              </div>
+            <% }); %>
+          </div>
+
+          <div class="grid">
+            <% githubRepos.forEach(repo => { %>
+              <div class="grid-item">
+                <github-repository owner-repo="<%- repo.owner %>"></github-repository>
+              </div>
+            <% }); %>
+          </div>
+
+        </div>
+      </main>
     </div>
 
-    <a class="mdc-fab mdc-fab--extended mdc-fab--exited app-fab--absolute" href="https://indieweb.social/@abraham">
-      <div class="mdc-fab__ripple"></div>
-      <svg
-        class="mdc-fab__icon"
-        aria-labelledby="bi-mastodon"
-        role="img"
-        viewBox="0 0 16 16"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <title id="bi-mastodon">Mastodon icon</title>
-        <path
-          d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-        />
-      </svg>
-      <span class="mdc-fab__label">Follow</span>
-    </a>
+    <footer>
+      <a class="mdc-fab mdc-fab--extended mdc-fab--exited app-fab--absolute" href="https://indieweb.social/@abraham">
+        <div class="mdc-fab__ripple"></div>
+        <svg
+          class="mdc-fab__icon"
+          aria-labelledby="bi-mastodon"
+          role="img"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title id="bi-mastodon">Mastodon icon</title>
+          <path
+            d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
+          />
+        </svg>
+        <span class="mdc-fab__label">Follow</span>
+      </a>
+    </footer>
   </body>
 </html>
