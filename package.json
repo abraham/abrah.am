@@ -28,8 +28,8 @@
     "lint:eslint": "eslint . --ext .ts",
     "lint:prettier": "prettier --check .",
     "lint:stylelint": "stylelint \"src/**/*.scss\"",
+    "serve": "npm run build && firebase emulators:start",
     "start": "firebase emulators:exec \"webpack --watch\"",
-    "start:prod": "npm run build && firebase emulators:start",
     "test": "npm run build && firebase emulators:exec \"npm run lighthouse\""
   },
   "keywords": [],
