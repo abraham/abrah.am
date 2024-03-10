@@ -67,4 +67,4 @@ window.addEventListener('scroll', onScroll);
 
 importComponents()
   .then(registerSW)
-  .catch((error: Error) => console.log(`Error importing dependancies or registering Service Worker: ${error}`));
+  .catch((error: Error) => console.log(`Error importing dependencies or registering Service Worker: ${error}`));
