@@ -1,5 +1,7 @@
+/// <reference lib="webworker" />
+
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
-import { clientsClaim, skipWaiting } from 'workbox-core';
+import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
@@ -10,7 +12,10 @@ const ONE_WEEK_EXPIRE = new ExpirationPlugin({
   maxAgeSeconds: 7 * SECONDS_IN_A_DAY,
 });
 
-skipWaiting();
+// eslint-disable-next-line no-undef
+declare const self: ServiceWorkerGlobalScope;
+
+self.skipWaiting();
 clientsClaim();
 cleanupOutdatedCaches();
 
