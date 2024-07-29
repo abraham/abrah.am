@@ -86,7 +86,7 @@
     "stylelint-selector-bem-pattern": "4.0.0",
     "ts-loader": "9.5.1",
     "ts-node": "10.9.2",
-    "typescript": "5.5.3",
+    "typescript": "5.5.4",
     "webpack": "5.93.0",
     "webpack-cli": "5.1.4",
     "workbox-webpack-plugin": "7.1.0"
