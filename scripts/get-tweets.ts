@@ -12,7 +12,7 @@ if (!consumerKey || !consumerSecret) {
 }
 
 const filePath = path.resolve('./src/index.json');
-let data = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }));
+const data = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }));
 const T = new Twit({
   consumer_key: consumerKey,
   consumer_secret: consumerSecret,
