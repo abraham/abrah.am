@@ -25,6 +25,7 @@ function registerSW(): Promise<ServiceWorkerRegistration | void> {
   return Promise.resolve();
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function importComponents(): Promise<any[]> {
   return Promise.all([
     import(/* webpackChunkName: 'components' */ 'node-package'),

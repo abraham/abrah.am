@@ -12,7 +12,6 @@ const ONE_WEEK_EXPIRE = new ExpirationPlugin({
   maxAgeSeconds: 7 * SECONDS_IN_A_DAY,
 });
 
-// eslint-disable-next-line no-undef
 declare const self: ServiceWorkerGlobalScope;
 
 self.skipWaiting();
