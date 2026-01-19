@@ -34,7 +34,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "@babel/runtime": "7.28.4",
+    "@babel/runtime": "7.28.6",
     "@material/chips": "14.0.0",
     "@material/fab": "14.0.0",
     "@material/ripple": "14.0.0",
@@ -51,9 +51,9 @@
     "workbox-strategies": "7.4.0"
   },
   "devDependencies": {
-    "@babel/core": "7.28.5",
+    "@babel/core": "7.28.6",
     "@babel/plugin-transform-runtime": "7.28.5",
-    "@babel/preset-env": "7.28.5",
+    "@babel/preset-env": "7.28.6",
     "@eslint/js": "^9.39.2",
     "@lhci/cli": "^0.15.1",
     "@types/html-webpack-plugin": "3.2.9",
