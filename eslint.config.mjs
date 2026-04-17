@@ -61,6 +61,17 @@ export default defineConfig(
     },
   },
 
+  // Node.js TypeScript files
+  {
+    files: ['scripts/**/*.ts', 'webpack.config.ts'],
+
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+
   // Prettier config to disable conflicting rules
   prettierConfig,
 
