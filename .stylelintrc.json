@@ -1,11 +1,8 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
-  "plugins": ["stylelint-scss", "stylelint-selector-bem-pattern"],
+  "plugins": ["stylelint-scss"],
   "rules": {
     "selector-class-pattern": null,
-    "plugin/selector-bem-pattern": {
-      "preset": "bem"
-    },
     "selector-type-no-unknown": [
       true,
       {
