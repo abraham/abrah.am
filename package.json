@@ -59,7 +59,7 @@
     "@types/html-webpack-plugin": "4.0.0",
     "@types/material-components-web": "1.0.0",
     "@types/mini-css-extract-plugin": "2.5.1",
-    "@types/node": "26.2.0",
+    "@types/node": "26.4.1",
     "@types/webfontloader": "1.6.38",
     "@types/webpack": "5.28.5",
     "babel-loader": "10.1.1",
