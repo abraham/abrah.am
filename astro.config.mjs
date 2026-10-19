@@ -63,12 +63,5 @@ export default defineConfig({
         resolve: { noExternal: ['cookie'] },
       },
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          loadPaths: [fileURLToPath(new URL('./node_modules', import.meta.url))],
-        },
-      },
-    },
   },
 });

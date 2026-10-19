@@ -1,0 +1,227 @@
+body {
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Ubuntu,
+    Cantarell,
+    'Helvetica Neue',
+    sans-serif;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+a {
+  color: #000;
+
+  &:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 2px;
+  }
+}
+
+h2 {
+  margin-left: 12px;
+}
+
+header h1 {
+  text-align: center;
+}
+
+.maine {
+  display: flex;
+  flex-direction: column;
+  margin: 128px auto 0;
+  max-width: 1280px;
+  padding: 12px;
+  padding-top: 48px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  border-width: 0;
+  margin: 12px;
+  width: calc(50% - 24px);
+}
+
+node-package {
+  --node-package-background-color: #fff;
+  --node-package-color: #000;
+  --node-package-link-color: #000;
+
+  border-color: #000;
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar {
+  border-radius: 8px;
+}
+
+.description {
+  hyphens: auto;
+  margin: 0 12px;
+  text-align: justify;
+}
+
+.promo {
+  border: 1px solid #000;
+  border-radius: 8px;
+  margin: 12px;
+  text-align: center;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 16px 0 8px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #000;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0179em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #0000000a;
+  }
+
+  &:active {
+    background-color: #0000001f;
+  }
+}
+
+.chip__icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.fab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: #563acc;
+  box-shadow:
+    0 3px 5px -1px #0003,
+    0 6px 10px #00000024,
+    0 1px 18px #0000001f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.0893em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    width 200ms ease-in-out,
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 15ms linear 30ms,
+    transform 270ms cubic-bezier(0, 0, 0.2, 1);
+
+  &:hover,
+  &:focus-visible {
+    background-color: color-mix(in srgb, #563acc, #fff 8%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #563acc;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    box-shadow:
+      0 7px 8px -4px #0003,
+      0 12px 17px 2px #00000024,
+      0 5px 22px 4px #0000001f;
+  }
+}
+
+.fab--extended {
+  width: 179px;
+}
+
+.fab--exited {
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 15ms linear 150ms,
+    transform 180ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+.fab__icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  padding: 0 16px;
+}
+
+.fab__label {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab {
+    transition: none;
+  }
+}
+
+@media all and (width <= 960px) {
+  .maine {
+    max-width: 640px;
+  }
+
+  .grid-item {
+    margin: 12px 0;
+    width: calc(100%);
+  }
+
+  h2 {
+    margin-left: 0;
+  }
+
+  .description {
+    margin: 0;
+  }
+
+  .promo {
+    margin: 12px 0;
+    padding: 0 8px;
+  }
+}

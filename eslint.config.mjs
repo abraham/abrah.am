@@ -76,6 +76,14 @@ export default defineConfig(
     },
   },
 
+  // Script blocks inside .astro files; `prettier --check` already formats the whole file
+  {
+    files: ['**/*.astro/*.ts', '**/*.astro/*.js'],
+    rules: {
+      'prettier/prettier': 'off',
+    },
+  },
+
   // Prettier config to disable conflicting rules
   prettierConfig,
 
