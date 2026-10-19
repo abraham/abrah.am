@@ -23,25 +23,21 @@ const promos = [
     url: 'https://meowstodon.app/',
     name: 'Meowstodon',
     description: 'The purrfect Mastodon app for Android',
-    color: 'bg-yellow',
   },
   {
     url: 'https://dieselpunk.dev/',
     name: 'Dieselpunk UI',
     description: 'Industrial game-style Web Components',
-    color: 'bg-pink',
   },
   {
     url: 'https://dockerfile.pub/',
     name: 'Dockerfile Explainer',
     description: 'Learn what each Dockerfile instruction does',
-    color: 'bg-green',
   },
   {
     url: 'https://daily.cat/',
     name: 'Daily Cat',
     description: 'A new cat photo from Unsplash every day',
-    color: 'bg-violet',
   },
 ];
 ---
@@ -71,7 +67,7 @@ const promos = [
   </header>
 
   <main class="content">
-    <section class="about">
+    <section>
       {/* Break lines only between words: Astro drops newline whitespace next to tags. */}
       <!-- prettier-ignore -->
       <p class="description" itemprop="description">
@@ -85,7 +81,7 @@ const promos = [
     </section>
 
     <section>
-      <h2 class="bg-yellow">Profiles</h2>
+      <h2>Profiles</h2>
 
       <ul class="chips">
         {links.map((link) => (
@@ -97,7 +93,7 @@ const promos = [
     </section>
 
     <section>
-      <h2 class="bg-pink">Recent posts</h2>
+      <h2>Recent posts</h2>
 
       {posts.length > 0 && (
         <div class="grid">
@@ -115,12 +111,12 @@ const promos = [
     </section>
 
     <section>
-      <h2 class="bg-green">Projects</h2>
+      <h2>Projects</h2>
 
       <ul class="promos">
         {promos.map((promo) => (
           <li>
-            <a class:list={['promo', promo.color]} href={promo.url}>
+            <a class="promo" href={promo.url}>
               <span class="promo__name">{promo.name}</span>
               {promo.description}
             </a>
