@@ -46,7 +46,7 @@
     "@astrojs/check": "0.9.10",
     "@eslint/js": "^10.0.1",
     "@lhci/cli": "^0.15.1",
-    "@types/node": "26.6.2",
+    "@types/node": "26.6.5",
     "@types/sanitize-html": "2.16.2",
     "astro": "7.4.0",
     "concurrently": "10.0.6",
