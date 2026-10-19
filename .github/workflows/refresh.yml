@@ -1,0 +1,87 @@
+name: Refresh
+
+# Redeploys when upstream content (Mastodon posts, npm and GitHub card data) changed.
+on:
+  schedule:
+    # Off the hour: GitHub delays or drops minute-0 runs under load.
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.repository == 'abraham/abrah.am'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Keeps this scheduled workflow enabled; see the keepalive step.
+      actions: write
+    outputs:
+      changed: ${{ steps.compare.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version-file: .nvmrc
+      # Dependency-free: uses only fetch and node:crypto, so no npm ci.
+      - id: fresh
+        run: node scripts/content-hash.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - id: live
+        run: |
+          # A missing file (first deploy) leaves the hash empty, which counts as changed.
+          hash=$(curl -fsS "https://abrah.am/content-hash.txt?t=$(date +%s)" || true)
+          echo "hash=$hash" >> "$GITHUB_OUTPUT"
+      - id: compare
+        env:
+          DEGRADED: ${{ steps.fresh.outputs.degraded }}
+          FRESH: ${{ steps.fresh.outputs.hash }}
+          LIVE: ${{ steps.live.outputs.hash }}
+        run: |
+          if [[ "$DEGRADED" == true ]]; then
+            echo "::warning::An upstream source fell back to local data; skipping deploy."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$FRESH" == "$LIVE" ]]; then
+            echo "No content changes ($LIVE)."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Content changed: ${LIVE:-none} -> $FRESH."
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      # GitHub disables scheduled workflows after 60 days without repository activity.
+      # Re-enabling through the API (as keepalive-workflow's API mode does) avoids empty commits.
+      - name: Keepalive
+        if: github.event_name == 'schedule'
+        run: gh api --method PUT "repos/$GITHUB_REPOSITORY/actions/workflows/refresh.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  deploy:
+    needs: check
+    if: needs.check.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: google-github-actions/auth@v3.0.0
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOY_SA }}
+      - run: npx firebase deploy --only hosting --project abraham-d3850 --non-interactive

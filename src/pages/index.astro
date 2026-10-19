@@ -8,18 +8,15 @@ import MastodonPost from '../components/MastodonPost.astro';
 import NpmPackageCard from '../components/NpmPackageCard.astro';
 import { links } from '../data/links';
 import { mastodon } from '../data/mastodon';
-import { githubRepos, nodePackages } from '../data/projects';
 import Base from '../layouts/Base.astro';
-import { fetchGitHubRepo } from '../lib/sources/github';
-import { fetchMastodonPosts } from '../lib/sources/mastodon';
-import { fetchNpmPackage } from '../lib/sources/npm';
+import { fetchSiteData } from '../lib/sources/index.ts';
 import '../styles/global.css';
 
-const [packages, repos, { posts }] = await Promise.all([
-  Promise.all(nodePackages.map(fetchNpmPackage)),
-  Promise.all(githubRepos.map(fetchGitHubRepo)),
-  fetchMastodonPosts(),
-]);
+const {
+  packages,
+  repos,
+  mastodon: { posts },
+} = await fetchSiteData();
 ---
 
 <Base title="Abraham Williams" description="Abraham Williams is a software engineer in Madison, WI working for GitHub">

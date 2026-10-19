@@ -1,12 +1,13 @@
-import type { GitHubRepo } from '../../data/projects';
-import { fetchJson } from './fetch-json';
+import type { GitHubRepo } from '../../data/projects.ts';
+import { fetchJson } from './fetch-json.ts';
 
 export interface GitHubRepoCard {
   fullName: string;
   url: string;
   description?: string;
   language?: string;
-  stars?: number;
+  /** Compact, as rendered ("4.3K"), so small star changes don't alter the content hash. */
+  stars?: string;
   license?: string;
   archived: boolean;
   /** True when the API couldn't be reached and only local data is shown. */
@@ -39,7 +40,9 @@ export async function fetchGitHubRepo({ owner }: GitHubRepo): Promise<GitHubRepo
       url: repo.html_url,
       description: repo.description ?? undefined,
       language: repo.language ?? undefined,
-      stars: repo.stargazers_count,
+      stars: repo.stargazers_count
+        ? new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(repo.stargazers_count)
+        : undefined,
       license: license && license !== 'NOASSERTION' ? license : undefined,
       archived: repo.archived,
       fallback: false,

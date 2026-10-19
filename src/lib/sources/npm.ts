@@ -1,5 +1,5 @@
-import type { NodePackage } from '../../data/projects';
-import { fetchJson } from './fetch-json';
+import type { NodePackage } from '../../data/projects.ts';
+import { fetchJson } from './fetch-json.ts';
 
 export interface NpmPackageCard {
   name: string;
