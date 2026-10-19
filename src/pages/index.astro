@@ -17,122 +17,130 @@ const {
   repos,
   mastodon: { posts },
 } = await fetchSiteData();
+
+const promos = [
+  {
+    url: 'https://meowstodon.app/',
+    name: 'Meowstodon',
+    description: 'The purrfect Mastodon app for Android',
+    color: 'bg-yellow',
+  },
+  {
+    url: 'https://dieselpunk.dev/',
+    name: 'Dieselpunk UI',
+    description: 'Industrial game-style Web Components',
+    color: 'bg-pink',
+  },
+  {
+    url: 'https://dockerfile.pub/',
+    name: 'Dockerfile Explainer',
+    description: 'Learn what each Dockerfile instruction does',
+    color: 'bg-green',
+  },
+  {
+    url: 'https://daily.cat/',
+    name: 'Daily Cat',
+    description: 'A new cat photo from Unsplash every day',
+    color: 'bg-violet',
+  },
+];
 ---
 
 <Base title="Abraham Williams" description="Abraham Williams is a software engineer in Madison, WI working for GitHub">
-  <div class="maine">
-    <div class="row center">
+  <header class="hero">
+    <div class="hero__inner">
       <Picture
         src={avatar}
         formats={['avif', 'webp']}
-        width={192}
-        height={192}
+        width={240}
+        height={240}
         densities={[1, 2]}
         alt="Abraham Williams"
-        class="avatar"
+        class="hero__avatar"
         itemprop="image"
         loading="eager"
         fetchpriority="high"
       />
-    </div>
-
-    <header class="row">
-      <h1>
-        Hello, I'm <span itemprop="name">Abraham Williams</span>
+      <h1 class="hero__title">
+        <span class="hero__hello">Hello, I'm</span>
+        <span class="hero__name" itemprop="name">
+          Abraham Williams
+        </span>
       </h1>
-    </header>
+    </div>
+  </header>
 
-    <main class="row">
-      <div>
-        {/* Break lines only between words: Astro drops newline whitespace next to tags. */}
-        <!-- prettier-ignore -->
-        <p class="description" itemprop="description">
-          I'm an experienced developer, startup founder, and <a rel="noopener" href="https://slides.today">international speaker</a>,
-          who brings a broad range of skills to my current role as a software engineer at <a rel="noopener" href="https://github.com/">GitHub</a>.
-          A top 1% contributor at <a rel="noopener" href="https://stackoverflow.com/users/story/26406">Stack Overflow</a> and
-          formerly a developer relations engineer at <a rel="noopener" href="https://developers.google.com/">Google</a>, a
-          senior developer at <a rel="noopener" href="https://bendyworks.com/">Bendyworks</a>, an organizer of <a rel="noopener" href="https://gdgmadison.com">GDG Madison</a>,
-          and a <a rel="noopener" href="https://developers.google.com/experts/people/abraham-williams">Google Developer Expert</a>.
-        </p>
-      </div>
+  <main class="content">
+    <section class="about">
+      {/* Break lines only between words: Astro drops newline whitespace next to tags. */}
+      <!-- prettier-ignore -->
+      <p class="description" itemprop="description">
+        I'm an experienced developer, startup founder, and <a rel="noopener" href="https://slides.today">international speaker</a>,
+        who brings a broad range of skills to my current role as a software engineer at <a rel="noopener" href="https://github.com/">GitHub</a>.
+        A top 1% contributor at <a rel="noopener" href="https://stackoverflow.com/users/story/26406">Stack Overflow</a> and
+        formerly a developer relations engineer at <a rel="noopener" href="https://developers.google.com/">Google</a>, a
+        senior developer at <a rel="noopener" href="https://bendyworks.com/">Bendyworks</a>, an organizer of <a rel="noopener" href="https://gdgmadison.com">GDG Madison</a>,
+        and a <a rel="noopener" href="https://developers.google.com/experts/people/abraham-williams">Google Developer Expert</a>.
+      </p>
+    </section>
 
-      <div class="row">
-        <h2>Profiles</h2>
+    <section>
+      <h2 class="bg-yellow">Profiles</h2>
 
-        <ul class="chips">
-          {links.map((link) => (
-            <li>
-              <Chip link={link} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul class="chips">
+        {links.map((link) => (
+          <li>
+            <Chip link={link} />
+          </li>
+        ))}
+      </ul>
+    </section>
 
-      <div class="row">
-        <h2>Recent posts</h2>
+    <section>
+      <h2 class="bg-pink">Recent posts</h2>
 
-        {posts.length > 0 && (
-          <div class="grid">
-            {posts.map((post) => (
-              <div class="grid-item">
-                <MastodonPost post={post} />
-              </div>
-            ))}
-          </div>
-        )}
-
-        <p class="more">
-          <a href={mastodon.profileUrl} rel="noopener me">
-            See my posts on Mastodon
-          </a>
-        </p>
-      </div>
-
-      <div class="row">
-        <h2>Projects</h2>
-
-        <div class="promo">
-          <p>
-            <a href="https://meowstodon.app/">Meowstodon, the purrfect Mastodon app for Android</a>
-          </p>
-        </div>
-
-        <div class="promo">
-          <p>
-            <a href="https://dieselpunk.dev/">Dieselpunk UI, industrial game-style Web Components</a>
-          </p>
-        </div>
-
-        <div class="promo">
-          <p>
-            <a href="https://dockerfile.pub/">Dockerfile Explainer, learn what each Dockerfile instruction does</a>
-          </p>
-        </div>
-
-        <div class="promo">
-          <p>
-            <a href="https://daily.cat/">Daily Cat, a new cat photo from Unsplash every day</a>
-          </p>
-        </div>
-
+      {posts.length > 0 && (
         <div class="grid">
-          {packages.map((pkg) => (
-            <div class="grid-item">
-              <NpmPackageCard pkg={pkg} />
-            </div>
+          {posts.map((post) => (
+            <MastodonPost post={post} />
           ))}
         </div>
+      )}
 
-        <div class="grid">
-          {repos.map((repo) => (
-            <div class="grid-item">
-              <GitHubRepoCard repo={repo} />
-            </div>
-          ))}
-        </div>
+      <p class="more">
+        <a class="button" href={mastodon.profileUrl} rel="noopener me">
+          See my posts on Mastodon
+        </a>
+      </p>
+    </section>
+
+    <section>
+      <h2 class="bg-green">Projects</h2>
+
+      <ul class="promos">
+        {promos.map((promo) => (
+          <li>
+            <a class:list={['promo', promo.color]} href={promo.url}>
+              <span class="promo__name">{promo.name}</span>
+              {promo.description}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="grid">
+        {packages.map((pkg) => (
+          <NpmPackageCard pkg={pkg} />
+        ))}
       </div>
-    </main>
-  </div>
+
+      <div class="grid">
+        {repos.map((repo) => (
+          <GitHubRepoCard repo={repo} />
+        ))}
+      </div>
+    </section>
+  </main>
 
   <footer>
     <Fab href="https://indieweb.social/@abraham" />
