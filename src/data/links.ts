@@ -29,27 +29,6 @@ export const links: ProfileLink[] = [
     text: 'Presentations',
   },
   {
-    url: 'http://instagram.com/abrahamwilliams',
-    sameAs: true,
-    relMe: true,
-    icon: 'photo',
-    text: 'Instagram',
-  },
-  {
-    url: 'https://twitter.com/abraham',
-    sameAs: true,
-    relMe: true,
-    icon: 'person',
-    text: 'Twitter',
-  },
-  {
-    url: 'https://www.facebook.com/abrahamwilliams',
-    sameAs: true,
-    relMe: true,
-    icon: 'person',
-    text: 'Facebook',
-  },
-  {
     url: 'https://www.linkedin.com/in/afivem/',
     sameAs: true,
     relMe: true,
@@ -85,13 +64,6 @@ export const links: ProfileLink[] = [
     text: 'DEV',
   },
   {
-    url: 'https://glitch.com/@abraham',
-    sameAs: true,
-    relMe: true,
-    icon: 'code',
-    text: 'Glitch',
-  },
-  {
     url: 'https://codepen.io/abraham/',
     sameAs: true,
     relMe: true,
@@ -106,25 +78,8 @@ export const links: ProfileLink[] = [
     text: 'YouTube',
   },
   {
-    url: 'https://cash.me/$abraham',
-    sameAs: true,
-    relMe: true,
-    icon: 'attach_money',
-    text: 'Cash',
-  },
-  {
     url: 'https://blog.abrah.am',
     icon: 'rss_feed',
     text: 'Blog',
-  },
-  {
-    url: 'https://bendyworks.com/blog/authors/abraham_williams',
-    icon: 'rss_feed',
-    text: 'Bendyworks blog',
-  },
-  {
-    url: 'https://medium.com/@abraham',
-    icon: 'rss_feed',
-    text: 'Medium',
   },
 ];
