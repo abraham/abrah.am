@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import type { MastodonMedia } from '../lib/sources/mastodon';
+
+interface Props {
+  images: (MastodonMedia & { width: number; height: number })[];
+  date: string;
+}
+
+const { images, date } = Astro.props;
+---
+
+<div class:list={['post__media', { 'post__media--grid': images.length > 1 }]}>
+  {images.map((image) => (
+    <Image
+      src={image.url}
+      width={image.width}
+      height={image.height}
+      alt={image.description || `Image attached to post from ${date}`}
+      widths={[320, image.width]}
+      sizes="(width <= 960px) 100vw, 600px"
+    />
+  ))}
+</div>

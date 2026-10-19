@@ -154,6 +154,65 @@ header h1 {
   white-space: nowrap;
 }
 
+.post__content {
+  overflow-wrap: anywhere;
+
+  & p {
+    line-height: 1.5;
+  }
+
+  & p + p {
+    margin-top: 0.75em;
+  }
+
+  & .invisible {
+    display: none;
+  }
+
+  & .ellipsis::after {
+    content: '…';
+  }
+}
+
+.post__warning summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.post__media {
+  display: grid;
+  gap: 8px;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+}
+
+.post__media--grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.post__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  color: #555;
+  font-size: 0.875rem;
+
+  & a {
+    color: inherit;
+  }
+}
+
+.more {
+  margin: 12px;
+  font-size: 1rem;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -322,5 +381,9 @@ header h1 {
   .promo {
     margin: 12px 0;
     padding: 0 8px;
+  }
+
+  .more {
+    margin: 12px 0;
   }
 }

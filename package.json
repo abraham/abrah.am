@@ -30,7 +30,8 @@
     "lint:sw": "tsc -p src/sw",
     "preview": "firebase emulators:start --only hosting",
     "start": "astro dev",
-    "test": "npm run build && firebase emulators:exec --only hosting \"npm run lighthouse\""
+    "test": "npm run test:unit && npm run build && firebase emulators:exec --only hosting \"npm run lighthouse\"",
+    "test:unit": "vitest run"
   },
   "keywords": [],
   "dependencies": {
@@ -45,6 +46,7 @@
     "@eslint/js": "^10.0.1",
     "@lhci/cli": "^0.15.1",
     "@types/node": "26.6.2",
+    "@types/sanitize-html": "2.16.2",
     "astro": "7.4.0",
     "concurrently": "10.0.6",
     "eslint": "^10.11.0",
@@ -56,10 +58,12 @@
     "prettier": "3.9.9",
     "prettier-plugin-astro": "1.1.1",
     "prettier-plugin-package": "2.0.0",
+    "sanitize-html": "2.18.1",
     "stylelint": "17.15.0",
     "stylelint-config-standard": "40.0.0",
     "typescript": "6.0.3",
     "typescript-eslint": "^8.70.1",
+    "vitest": "5.0.5",
     "workbox-build": "7.4.1"
   }
 }
