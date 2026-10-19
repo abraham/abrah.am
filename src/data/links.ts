@@ -1,8 +1,9 @@
+import type { IconName } from '../components/Icon.astro';
+
 export interface ProfileLink {
   url: string;
   text: string;
-  /** Material Icons ligature name. */
-  icon: string;
+  icon: IconName;
   sameAs?: boolean;
   relMe?: boolean;
 }
