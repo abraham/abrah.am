@@ -117,22 +117,6 @@
         </div>
 
         <div class="row">
-          <h2>Recent tweets</h2>
-
-          <div class="grid">
-            <% tweets.forEach(tweet => { %>
-              <div class="grid-item">
-                <twitter-status status="<%- JSON.stringify(tweet) %>"></twitter-status>
-              </div>
-            <% }); %>
-
-            <% if (tweets.length === 0) { %>
-              <div class="grid-item">Unable to load tweets.</div>
-            <% } %>
-          </div>
-        </div>
-
-        <div class="row">
           <h2>Projects</h2>
 
           <div class="promo">

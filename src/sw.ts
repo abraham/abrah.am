@@ -69,18 +69,5 @@ registerRoute(
   }),
 );
 
-registerRoute(
-  new RegExp('^https://pbs.twimg.com/(.*)'),
-  new CacheFirst({
-    cacheName: 'twitter',
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200],
-      }),
-      ONE_WEEK_EXPIRE,
-    ],
-  }),
-);
-
 /* eslint-disable-next-line */
 precacheAndRoute((self as any).__WB_MANIFEST);

@@ -1,2 +1,3 @@
 # Ignore artifacts:
 public
+docs/baseline/*.report.*
