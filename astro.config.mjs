@@ -36,9 +36,9 @@ function serviceWorker() {
           swSrc: swDest,
           swDest,
           globDirectory: outDir,
-          globPatterns: ['**/*.{html,js,css,json,txt,ico,png,jpg,webp,avif}'],
-          // App icons are only fetched by the browser at install time.
-          globIgnores: ['sw.js', 'img/icon-*'],
+          // HTML and images are cached at runtime by src/sw/sw.ts, not precached.
+          // 404.html is excluded too: Firebase serves it with a 404 status, which fails precaching.
+          globPatterns: ['_astro/**/*.{js,css}', 'favicon.ico', 'manifest.json'],
           dontCacheBustURLsMatching: /^_astro\//,
         });
         warnings.forEach((warning) => logger.warn(warning));
