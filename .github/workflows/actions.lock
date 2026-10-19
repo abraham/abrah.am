@@ -3,19 +3,34 @@
 # Docs: https://gh.io/actions-lockfile
 version: 'v0.0.3'
 workflows:
-    '.github/workflows/deploy-preview.yml':
+    '.github/workflows/ci.yml':
         - 'actions/checkout@v7.0.1'
-        - 'w9jds/firebase-action@v15.33.0'
-    '.github/workflows/main.yaml':
+        - 'actions/setup-node@v7.1.0'
+    '.github/workflows/deploy.yml':
         - 'actions/checkout@v7.0.1'
+        - 'actions/setup-node@v7.1.0'
+        - 'google-github-actions/auth@v3.0.0'
+    '.github/workflows/preview.yml':
+        - 'actions/checkout@v7.0.1'
+        - 'actions/setup-node@v7.1.0'
+        - 'google-github-actions/auth@v3.0.0'
+    '.github/workflows/refresh.yml':
+        - 'actions/checkout@v7.0.1'
+        - 'actions/setup-node@v7.1.0'
+        - 'google-github-actions/auth@v3.0.0'
 dependencies:
     'actions/checkout@v7.0.1':
         ref: 'v7.0.1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
-    'w9jds/firebase-action@v15.33.0':
-        ref: 'v15.33.0'
-        commit: 'sha1-e29beaf3208f031d4864f2bf6ddd8f890d5c8afc'
-        owner_id: 164540
-        repo_id: 159878508
+    'actions/setup-node@v7.1.0':
+        ref: 'v7.1.0'
+        commit: 'sha1-949feb2413d6458794dcd2491c4babbbce0c15c1'
+        owner_id: 44036562
+        repo_id: 189476904
+    'google-github-actions/auth@v3.0.0':
+        ref: 'v3.0.0'
+        commit: 'sha1-7c6bc770dae815cd3e89ee6cdf493a5fab2cc093'
+        owner_id: 71461757
+        repo_id: 407242578

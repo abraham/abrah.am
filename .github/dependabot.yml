@@ -10,9 +10,11 @@ updates:
       interval: weekly
     open-pull-requests-limit: 10
     groups:
-      babel:
+      astro:
         patterns:
-          - '*babel*'
+          - 'astro'
+          - '@astrojs/*'
+          - '*astro*'
       workbox:
         patterns:
           - 'workbox-*'
@@ -23,9 +25,3 @@ updates:
         patterns:
           - 'eslint*'
           - '@typescript-eslint/*'
-      webpack:
-        patterns:
-          - '*webpack*'
-      material:
-        patterns:
-          - '@material/*'

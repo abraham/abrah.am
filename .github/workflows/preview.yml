@@ -1,0 +1,49 @@
+name: Preview
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    # Fork PRs can't mint OIDC tokens, so they only get CI.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: google-github-actions/auth@v3.0.0
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOY_SA }}
+      - id: deploy
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          npx firebase hosting:channel:deploy "pr-$PR_NUMBER" --expires 7d --project abraham-d3850 --json > deploy.json
+          echo "url=$(jq -r '.result[].url' deploy.json)" >> "$GITHUB_OUTPUT"
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.number }}
+          PREVIEW_URL: ${{ steps.deploy.outputs.url }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --edit-last --create-if-none \
+            --body "Preview: $PREVIEW_URL (built from $SHA, expires in 7 days)"

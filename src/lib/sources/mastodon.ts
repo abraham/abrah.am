@@ -1,5 +1,5 @@
-import { mastodon } from '../../data/mastodon';
-import { fetchJson } from './fetch-json';
+import { mastodon } from '../../data/mastodon.ts';
+import { fetchJson } from './fetch-json.ts';
 
 export interface MastodonMedia {
   type: 'image' | 'gifv' | 'video' | 'audio' | 'unknown';
