@@ -1,16 +1,18 @@
-/* global process */
-
 import { MDCChipSet } from '@material/chips';
 import { MDCRipple } from '@material/ripple';
-import * as WebFont from 'webfontloader';
-import './index.scss';
+import WebFont from 'webfontloader';
 
-new MDCChipSet(document.querySelector('.mdc-evolution-chip-set'));
-new MDCRipple(document.querySelector('.mdc-fab'));
+const chipSet = document.querySelector<HTMLElement>('.mdc-evolution-chip-set');
+const fab = document.querySelector<HTMLElement>('.mdc-fab');
 
-setTimeout(() => {
-  document.querySelector('.mdc-fab').classList.remove('mdc-fab--exited');
-}, 1000);
+if (chipSet) {
+  new MDCChipSet(chipSet);
+}
+
+if (fab) {
+  new MDCRipple(fab);
+  setTimeout(() => fab.classList.remove('mdc-fab--exited'), 1000);
+}
 
 WebFont.load({
   google: {
@@ -19,26 +21,18 @@ WebFont.load({
 });
 
 function registerSW(): Promise<ServiceWorkerRegistration | void> {
-  if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+  if ('serviceWorker' in navigator && import.meta.env.PROD) {
     return navigator.serviceWorker.register('/sw.js');
   }
   return Promise.resolve();
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function importComponents(): Promise<any[]> {
-  return Promise.all([
-    import(/* webpackChunkName: 'components' */ 'node-package'),
-    import(/* webpackChunkName: 'components' */ 'github-repository'),
-  ]);
+function importComponents(): Promise<unknown[]> {
+  return Promise.all([import('node-package'), import('github-repository')]);
 }
 
 function extendFab(extended: boolean) {
-  if (extended) {
-    document.querySelector('.mdc-fab').classList.add('mdc-fab--extended');
-  } else {
-    document.querySelector('.mdc-fab').classList.remove('mdc-fab--extended');
-  }
+  fab?.classList.toggle('mdc-fab--extended', extended);
 }
 
 let lastKnownScrollPosition = 0;

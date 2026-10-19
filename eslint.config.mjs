@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import eslintPluginAstro from 'eslint-plugin-astro';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import { defineConfig } from 'eslint/config';
@@ -11,6 +12,9 @@ export default defineConfig(
 
   // TypeScript configuration
   ...tseslint.configs.recommended,
+
+  // Astro components
+  ...eslintPluginAstro.configs.recommended,
 
   {
     files: ['**/*.ts', '**/*.tsx'],
@@ -63,7 +67,7 @@ export default defineConfig(
 
   // Node.js TypeScript files
   {
-    files: ['scripts/**/*.ts', 'webpack.config.ts'],
+    files: ['scripts/**/*.ts'],
 
     languageOptions: {
       globals: {
@@ -76,6 +80,6 @@ export default defineConfig(
   prettierConfig,
 
   {
-    ignores: ['node_modules/**', 'public/**', '.firebase/**', 'coverage/**'],
+    ignores: ['node_modules/**', 'dist/**', '.astro/**', '.firebase/**', 'coverage/**'],
   },
 );
