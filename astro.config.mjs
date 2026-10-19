@@ -58,6 +58,10 @@ export default defineConfig({
     inlineStylesheets: 'never',
   },
   integrations: [serviceWorker()],
+  image: {
+    // indieweb.social media; downloaded and optimized at build time, then served from abrah.am.
+    remotePatterns: [{ protocol: 'https', hostname: 'cdn.masto.host' }],
+  },
   vite: {
     build: {
       assetsInlineLimit: 0,

@@ -4,17 +4,21 @@ import avatar from '../assets/abraham.jpg';
 import Chip from '../components/Chip.astro';
 import Fab from '../components/Fab.astro';
 import GitHubRepoCard from '../components/GitHubRepoCard.astro';
+import MastodonPost from '../components/MastodonPost.astro';
 import NpmPackageCard from '../components/NpmPackageCard.astro';
 import { links } from '../data/links';
+import { mastodon } from '../data/mastodon';
 import { githubRepos, nodePackages } from '../data/projects';
 import Base from '../layouts/Base.astro';
 import { fetchGitHubRepo } from '../lib/sources/github';
+import { fetchMastodonPosts } from '../lib/sources/mastodon';
 import { fetchNpmPackage } from '../lib/sources/npm';
 import '../styles/global.css';
 
-const [packages, repos] = await Promise.all([
+const [packages, repos, { posts }] = await Promise.all([
   Promise.all(nodePackages.map(fetchNpmPackage)),
   Promise.all(githubRepos.map(fetchGitHubRepo)),
+  fetchMastodonPosts(),
 ]);
 ---
 
@@ -65,6 +69,26 @@ const [packages, repos] = await Promise.all([
             </li>
           ))}
         </ul>
+      </div>
+
+      <div class="row">
+        <h2>Recent posts</h2>
+
+        {posts.length > 0 && (
+          <div class="grid">
+            {posts.map((post) => (
+              <div class="grid-item">
+                <MastodonPost post={post} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        <p class="more">
+          <a href={mastodon.profileUrl} rel="noopener me">
+            See my posts on Mastodon
+          </a>
+        </p>
       </div>
 
       <div class="row">

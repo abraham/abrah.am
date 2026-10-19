@@ -1,0 +1,63 @@
+---
+import { sanitizePostHtml } from '../lib/sanitize';
+import type { MastodonMedia, MastodonPost as Post } from '../lib/sources/mastodon';
+import PostImages from './PostImages.astro';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+
+const content = sanitizePostHtml(post.content);
+const date = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'America/Chicago' }).format(
+  new Date(post.createdAt),
+);
+const images = post.media.filter(
+  (media): media is MastodonMedia & { width: number; height: number } =>
+    media.type === 'image' && Boolean(media.width && media.height),
+);
+const hasOtherMedia = post.media.some((media) => media.type !== 'image');
+---
+
+<article class="card post h-entry">
+  {post.spoilerText ? (
+    <details class="post__warning">
+      <summary>{post.spoilerText}</summary>
+      <div class="post__content e-content" set:html={content} />
+      {images.length > 0 && <PostImages images={images} date={date} />}
+    </details>
+  ) : (
+    <>
+      <div class="post__content e-content" set:html={content} />
+      {images.length > 0 &&
+        (post.sensitive ? (
+          <details class="post__warning">
+            <summary>Show sensitive media</summary>
+            <PostImages images={images} date={date} />
+          </details>
+        ) : (
+          <PostImages images={images} date={date} />
+        ))}
+    </>
+  )}
+
+  {hasOtherMedia && (
+    <p>
+      <a href={post.url} rel="noopener">
+        Contains video or audio
+      </a>
+    </p>
+  )}
+
+  <footer class="post__footer">
+    <a class="u-url" href={post.url} rel="noopener">
+      <time class="dt-published" datetime={post.createdAt}>
+        {date}
+      </time>
+    </a>
+    <a href={post.url} rel="noopener">
+      View on Mastodon
+    </a>
+  </footer>
+</article>
