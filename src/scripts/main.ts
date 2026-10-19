@@ -1,14 +1,7 @@
-function registerSW(): Promise<ServiceWorkerRegistration | void> {
-  if ('serviceWorker' in navigator && import.meta.env.PROD) {
-    return navigator.serviceWorker.register('/sw.js');
-  }
-  return Promise.resolve();
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .catch((error) => console.error('Service worker registration failed', error));
+  });
 }
-
-function importComponents(): Promise<unknown[]> {
-  return Promise.all([import('node-package'), import('github-repository')]);
-}
-
-importComponents()
-  .then(registerSW)
-  .catch((error: Error) => console.log(`Error importing dependencies or registering Service Worker: ${error}`));

@@ -3,10 +3,19 @@ import { Picture } from 'astro:assets';
 import avatar from '../assets/abraham.jpg';
 import Chip from '../components/Chip.astro';
 import Fab from '../components/Fab.astro';
+import GitHubRepoCard from '../components/GitHubRepoCard.astro';
+import NpmPackageCard from '../components/NpmPackageCard.astro';
 import { links } from '../data/links';
 import { githubRepos, nodePackages } from '../data/projects';
 import Base from '../layouts/Base.astro';
+import { fetchGitHubRepo } from '../lib/sources/github';
+import { fetchNpmPackage } from '../lib/sources/npm';
 import '../styles/global.css';
+
+const [packages, repos] = await Promise.all([
+  Promise.all(nodePackages.map(fetchNpmPackage)),
+  Promise.all(githubRepos.map(fetchGitHubRepo)),
+]);
 ---
 
 <Base title="Abraham Williams" description="Abraham Williams is a software engineer in Madison, WI working for GitHub">
@@ -80,17 +89,17 @@ import '../styles/global.css';
         </div>
 
         <div class="grid">
-          {nodePackages.map((pkg) => (
+          {packages.map((pkg) => (
             <div class="grid-item">
-              <node-package name={pkg.name} global={pkg.global ? '' : undefined} />
+              <NpmPackageCard pkg={pkg} />
             </div>
           ))}
         </div>
 
         <div class="grid">
-          {githubRepos.map((repo) => (
+          {repos.map((repo) => (
             <div class="grid-item">
-              <github-repository owner-repo={repo.owner} />
+              <GitHubRepoCard repo={repo} />
             </div>
           ))}
         </div>

@@ -1,0 +1,63 @@
+---
+import type { GitHubRepoCard as Repo } from '../lib/sources/github';
+
+interface Props {
+  repo: Repo;
+}
+
+const { repo } = Astro.props;
+
+// Colors from github-linguist for the languages in use; others fall back to gray.
+const languageColors: Record<string, string> = {
+  Dart: '#00b4ab',
+  HTML: '#e34c26',
+  JavaScript: '#f1e05a',
+  PHP: '#4f5d95',
+  Python: '#3572a5',
+  Ruby: '#701516',
+  TypeScript: '#3178c6',
+};
+const languageColor = (repo.language && languageColors[repo.language]) || '#8b949e';
+const stars = repo.stars
+  ? new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(repo.stars)
+  : undefined;
+---
+
+<article class="card">
+  <header class="card__header">
+    <h3 class="card__title">
+      <a href={repo.url} rel="noopener">
+        {repo.fullName}
+      </a>
+    </h3>
+    <svg class="card__logo" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"></path>
+    </svg>
+  </header>
+
+  {repo.description && <p class="card__description">{repo.description}</p>}
+
+  <ul class="card__meta">
+    {repo.archived && <li class="card__badge">Archived</li>}
+    {repo.language && (
+      <li>
+        <svg class="card__dot" viewBox="0 0 10 10" aria-hidden="true">
+          <circle cx="5" cy="5" r="5" fill={languageColor} />
+        </svg>
+        {repo.language}
+      </li>
+    )}
+    {stars && (
+      <li>
+        <svg class="card__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z" />
+        </svg>
+        <span>
+          {stars}
+          <span class="visually-hidden"> stars</span>
+        </span>
+      </li>
+    )}
+    {repo.license && <li>{repo.license}</li>}
+  </ul>
+</article>
