@@ -54,9 +54,14 @@ export default defineConfig({
   trailingSlash: 'always',
   build: {
     format: 'directory',
+    // Keep CSS and JS in hashed external files so the CSP can stay at 'self' without inline hashes.
+    inlineStylesheets: 'never',
   },
   integrations: [serviceWorker()],
   vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
     environments: {
       prerender: {
         // Root node_modules has cookie@0.7 (via express); bundle Astro's nested cookie@2 into the prerenderer.

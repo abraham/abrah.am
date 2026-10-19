@@ -55,13 +55,112 @@ header h1 {
   width: calc(50% - 24px);
 }
 
-node-package {
-  --node-package-background-color: #fff;
-  --node-package-color: #000;
-  --node-package-link-color: #000;
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 16px 20px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
 
-  border-color: #000;
-  width: 100%;
+  & p {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__title {
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.25rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  & a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.card__logo {
+  flex: none;
+  width: auto;
+  height: 20px;
+}
+
+.card__description {
+  color: #333;
+  line-height: 1.5;
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin: auto 0 0;
+  padding: 0;
+  color: #555;
+  font-size: 0.875rem;
+  list-style: none;
+
+  & li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.card__badge {
+  padding: 0 8px;
+  border: 1px solid currentcolor;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card__dot {
+  width: 10px;
+  height: 10px;
+}
+
+.card__icon {
+  width: 14px;
+  height: 14px;
+}
+
+.card__install {
+  display: block;
+  padding: 8px 12px;
+  overflow-x: auto;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .center {

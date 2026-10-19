@@ -4,6 +4,7 @@ jobs:
   test:
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
     runs-on: ubuntu-latest
     name: Test
@@ -16,6 +17,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v7.0.1
       - run: npm ci

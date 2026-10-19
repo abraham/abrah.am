@@ -11,6 +11,8 @@ jobs:
       - run: npm ci
       - run: npx firebase use abraham-d3850
       - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: w9jds/firebase-action@v15.33.0
         with:
           args: hosting:channel:deploy ${{ github.ref_name }}
