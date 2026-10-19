@@ -47,6 +47,8 @@ module.exports = {
     new InjectManifest({
       swSrc: path.resolve(__dirname, 'src', 'sw.ts'),
       swDest: 'sw.js',
+      // App icons are only fetched by the browser at install time; don't precache them.
+      exclude: [/\.map$/, /^manifest.*\.js$/, /^img\/icon-/],
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -67,7 +69,11 @@ module.exports = {
           to: '.',
         },
         {
-          from: '*.json',
+          from: 'manifest.json',
+          to: '.',
+        },
+        {
+          from: '404.html',
           to: '.',
         },
       ],
