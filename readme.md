@@ -15,7 +15,7 @@ npm test            # unit tests, build, and Lighthouse CI against the hosting e
 
 ## Deployment
 
-GitHub Actions deploys through OIDC (see `scripts/setup-wif.sh`):
+GitHub Actions deploys through OIDC with [firebase-wif](https://github.com/abraham/firebase-wif) (`npx @abraham/firebase-wif status` checks the setup):
 
 - Pushes to `main` deploy to production.
 - Pull requests from this repo get a preview channel.
