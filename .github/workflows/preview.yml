@@ -15,6 +15,7 @@ jobs:
     # Fork PRs can't mint OIDC tokens, so they only get CI.
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    environment: preview
     permissions:
       contents: read
       id-token: write
