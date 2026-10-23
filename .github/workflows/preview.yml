@@ -15,7 +15,9 @@ jobs:
     # Fork PRs can't mint OIDC tokens, so they only get CI.
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
-    environment: preview
+    environment:
+      name: preview
+      url: ${{ steps.deploy.outputs.url }}
     permissions:
       contents: read
       id-token: write
@@ -38,7 +40,7 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.number }}
         run: |
-          npx firebase hosting:channel:deploy "pr-$PR_NUMBER" --expires 7d --project abraham-d3850 --json > deploy.json
+          npx firebase hosting:channel:deploy "pr-$PR_NUMBER" --expires 1d --project abraham-d3850 --json > deploy.json
           echo "url=$(jq -r '.result[].url' deploy.json)" >> "$GITHUB_OUTPUT"
       - env:
           GH_TOKEN: ${{ github.token }}
@@ -47,4 +49,4 @@ jobs:
           SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --edit-last --create-if-none \
-            --body "Preview: $PREVIEW_URL (built from $SHA, expires in 7 days)"
+            --body "Preview: $PREVIEW_URL (built from $SHA, expires in 1 day)"
