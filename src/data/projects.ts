@@ -8,6 +8,40 @@ export interface GitHubRepo {
   owner: string;
 }
 
+export interface Promo {
+  url: string;
+  name: string;
+  description: string;
+}
+
+export const promos: Promo[] = [
+  {
+    url: 'https://llm.kitchen/',
+    name: 'LLM Kitchen',
+    description: 'How a large language model works, one idea at a time',
+  },
+  {
+    url: 'https://meowstodon.app/',
+    name: 'Meowstodon',
+    description: 'The purrfect Mastodon app for Android',
+  },
+  {
+    url: 'https://dieselpunk.dev/',
+    name: 'Dieselpunk UI',
+    description: 'Industrial game-style Web Components',
+  },
+  {
+    url: 'https://dockerfile.pub/',
+    name: 'Dockerfile Explainer',
+    description: 'Learn what each Dockerfile instruction does',
+  },
+  {
+    url: 'https://daily.cat/',
+    name: 'Daily Cat',
+    description: 'A new cat photo from Unsplash every day',
+  },
+];
+
 export const nodePackages: NodePackage[] = [
   {
     name: '@nutmeg/cli',
@@ -44,6 +78,9 @@ export const nodePackages: NodePackage[] = [
 ];
 
 export const githubRepos: GitHubRepo[] = [
+  {
+    owner: 'abraham/llm-kitchen',
+  },
   {
     owner: 'abraham/twitteroauth',
   },

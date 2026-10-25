@@ -8,6 +8,7 @@ import MastodonPost from '../components/MastodonPost.astro';
 import NpmPackageCard from '../components/NpmPackageCard.astro';
 import { links } from '../data/links';
 import { mastodon } from '../data/mastodon';
+import { promos } from '../data/projects';
 import Base from '../layouts/Base.astro';
 import { fetchSiteData } from '../lib/sources/index.ts';
 import '../styles/global.css';
@@ -17,29 +18,6 @@ const {
   repos,
   mastodon: { posts },
 } = await fetchSiteData();
-
-const promos = [
-  {
-    url: 'https://meowstodon.app/',
-    name: 'Meowstodon',
-    description: 'The purrfect Mastodon app for Android',
-  },
-  {
-    url: 'https://dieselpunk.dev/',
-    name: 'Dieselpunk UI',
-    description: 'Industrial game-style Web Components',
-  },
-  {
-    url: 'https://dockerfile.pub/',
-    name: 'Dockerfile Explainer',
-    description: 'Learn what each Dockerfile instruction does',
-  },
-  {
-    url: 'https://daily.cat/',
-    name: 'Daily Cat',
-    description: 'A new cat photo from Unsplash every day',
-  },
-];
 ---
 
 <Base title="Abraham Williams" description="Abraham Williams is a software engineer in Madison, WI working for GitHub">
