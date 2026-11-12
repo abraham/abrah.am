@@ -3,19 +3,16 @@ import { Picture } from 'astro:assets';
 import avatar from '../assets/abraham.jpg';
 import Chip from '../components/Chip.astro';
 import Fab from '../components/Fab.astro';
-import GitHubRepoCard from '../components/GitHubRepoCard.astro';
 import MastodonPost from '../components/MastodonPost.astro';
-import NpmPackageCard from '../components/NpmPackageCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import { links } from '../data/links';
 import { mastodon } from '../data/mastodon';
-import { promos } from '../data/projects';
 import Base from '../layouts/Base.astro';
 import { fetchSiteData } from '../lib/sources/index.ts';
 import '../styles/global.css';
 
 const {
-  packages,
-  repos,
+  projects,
   mastodon: { posts },
 } = await fetchSiteData();
 ---
@@ -91,26 +88,9 @@ const {
     <section>
       <h2>Projects</h2>
 
-      <ul class="promos">
-        {promos.map((promo) => (
-          <li>
-            <a class="promo" href={promo.url}>
-              <span class="promo__name">{promo.name}</span>
-              {promo.description}
-            </a>
-          </li>
-        ))}
-      </ul>
-
       <div class="grid">
-        {packages.map((pkg) => (
-          <NpmPackageCard pkg={pkg} />
-        ))}
-      </div>
-
-      <div class="grid">
-        {repos.map((repo) => (
-          <GitHubRepoCard repo={repo} />
+        {projects.map((project) => (
+          <ProjectCard project={project} />
         ))}
       </div>
     </section>

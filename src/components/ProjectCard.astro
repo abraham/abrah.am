@@ -1,0 +1,88 @@
+---
+import type { ProjectCard as Project, ProjectLink } from '../lib/sources/projects';
+import Icon, { type IconName } from './Icon.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const linkLabels: Record<ProjectLink['kind'], { icon: IconName; text: string }> = {
+  website: { icon: 'link', text: 'Website' },
+  playStore: { icon: 'googleplay', text: 'Google Play' },
+  marketplace: { icon: 'githubactions', text: 'Marketplace' },
+  github: { icon: 'github', text: 'GitHub' },
+  npm: { icon: 'npm', text: 'npm' },
+  pub: { icon: 'dart', text: 'pub.dev' },
+  youtube: { icon: 'youtube', text: 'YouTube' },
+};
+
+// Colors from github-linguist for the languages in use; others fall back to gray.
+const languageColors: Record<string, string> = {
+  CSS: '#663399',
+  Dart: '#00b4ab',
+  HTML: '#e34c26',
+  JavaScript: '#f1e05a',
+  PHP: '#4f5d95',
+  Python: '#3572a5',
+  Ruby: '#701516',
+  TypeScript: '#3178c6',
+};
+const hasMeta = Boolean(
+  project.archived || project.deprecated || project.language || project.stars || project.version || project.license,
+);
+const languageColor = (project.language && languageColors[project.language]) || '#8b949e';
+---
+
+<article class="card">
+  <h3 class="card__title">
+    <a href={project.url} rel="noopener">
+      {project.name}
+    </a>
+  </h3>
+
+  {project.description && <p class="card__description">{project.description}</p>}
+
+  {hasMeta && (
+    <ul class="card__meta">
+      {project.archived && <li class="card__badge">Archived</li>}
+      {project.deprecated && <li class="card__badge">Deprecated</li>}
+      {project.language && (
+        <li>
+          <svg class="card__dot" viewBox="0 0 10 10" aria-hidden="true">
+            <circle cx="5" cy="5" r="5" fill={languageColor} />
+          </svg>
+          {project.language}
+        </li>
+      )}
+      {project.stars && (
+        <li>
+          <svg class="card__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z" />
+          </svg>
+          <span>
+            {project.stars}
+            <span class="visually-hidden"> stars</span>
+          </span>
+        </li>
+      )}
+      {project.version && <li>v{project.version}</li>}
+      {project.license && <li>{project.license}</li>}
+    </ul>
+  )}
+
+  {project.install && <code class="card__install">{project.install}</code>}
+
+  <ul class="card__links">
+    {project.links.map((link) => (
+      <li>
+        <a class="card__link" href={link.url} rel="noopener">
+          <Icon name={linkLabels[link.kind].icon} class="card__icon" />
+          {linkLabels[link.kind].text}
+          <span class="visually-hidden"> for {project.name}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</article>

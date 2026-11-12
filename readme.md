@@ -2,7 +2,7 @@ Abraham Williams - <abraham@abrah.am> - <https://abrah.am>
 
 Source for <https://abrah.am>, a single-page profile site built with [Astro](https://astro.build) and hosted on Firebase.
 
-Recent Mastodon posts and npm/GitHub project cards are fetched at build time and rendered to static HTML.
+Recent Mastodon posts and project cards are fetched at build time and rendered to static HTML. Each project in `src/data/projects.ts` can combine a website, a Play Store listing, a GitHub Marketplace listing, a GitHub repo, an npm package, a pub.dev package, and a YouTube video into one card.
 
 ## Development
 
