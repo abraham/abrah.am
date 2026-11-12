@@ -1,12 +1,10 @@
-import { githubRepos, nodePackages } from '../../data/projects.ts';
+import { projects as projectSources } from '../../data/projects.ts';
 import { contentHash } from '../content-hash.ts';
-import { fetchGitHubRepo, type GitHubRepoCard } from './github.ts';
 import { fetchMastodonPosts, type MastodonPosts } from './mastodon.ts';
-import { fetchNpmPackage, type NpmPackageCard } from './npm.ts';
+import { fetchProject, type ProjectCard } from './projects.ts';
 
 export interface SiteData {
-  packages: NpmPackageCard[];
-  repos: GitHubRepoCard[];
+  projects: ProjectCard[];
   mastodon: MastodonPosts;
   /** True when any upstream fell back to local data. */
   degraded: boolean;
@@ -23,18 +21,13 @@ export function fetchSiteData(): Promise<SiteData> {
 }
 
 async function load(): Promise<SiteData> {
-  const [packages, repos, mastodon] = await Promise.all([
-    Promise.all(nodePackages.map(fetchNpmPackage)),
-    Promise.all(githubRepos.map(fetchGitHubRepo)),
-    fetchMastodonPosts(),
-  ]);
-  const degraded = packages.some((pkg) => pkg.fallback) || repos.some((repo) => repo.fallback) || mastodon.fallback;
+  const [projects, mastodon] = await Promise.all([Promise.all(projectSources.map(fetchProject)), fetchMastodonPosts()]);
+  const degraded = projects.some((project) => project.fallback) || mastodon.fallback;
 
   return {
-    packages,
-    repos,
+    projects,
     mastodon,
     degraded,
-    hash: contentHash({ packages, repos, posts: mastodon.posts }),
+    hash: contentHash({ projects, posts: mastodon.posts }),
   };
 }

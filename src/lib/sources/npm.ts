@@ -1,10 +1,11 @@
-import type { NodePackage } from '../../data/projects.ts';
+import type { NpmSource } from '../../data/projects.ts';
 import { fetchJson } from './fetch-json.ts';
 
 export interface NpmPackageCard {
   name: string;
   url: string;
   global: boolean;
+  dev: boolean;
   description?: string;
   version?: string;
   license?: string;
@@ -20,8 +21,8 @@ interface RegistryManifest {
   deprecated?: string;
 }
 
-export async function fetchNpmPackage({ name, global }: NodePackage): Promise<NpmPackageCard> {
-  const card = { name, global, url: `https://www.npmjs.com/package/${name}` };
+export async function fetchNpmPackage({ name, global = false, dev = false }: NpmSource): Promise<NpmPackageCard> {
+  const card = { name, global, dev, url: `https://www.npmjs.com/package/${name}` };
 
   try {
     const manifest = await fetchJson<RegistryManifest>(`https://registry.npmjs.org/${name.replace('/', '%2F')}/latest`);

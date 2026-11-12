@@ -1,4 +1,3 @@
-import type { GitHubRepo } from '../../data/projects.ts';
 import { fetchJson } from './fetch-json.ts';
 
 export interface GitHubRepoCard {
@@ -24,7 +23,8 @@ interface RepoResponse {
   archived: boolean;
 }
 
-export async function fetchGitHubRepo({ owner }: GitHubRepo): Promise<GitHubRepoCard> {
+/** @param owner `owner/repo` */
+export async function fetchGitHubRepo(owner: string): Promise<GitHubRepoCard> {
   const token = process.env.GITHUB_TOKEN;
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github+json',
