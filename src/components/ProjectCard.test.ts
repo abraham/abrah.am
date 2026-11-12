@@ -28,6 +28,7 @@ describe('ProjectCard', () => {
     expect(html).toContain('href="https://github.com/abraham/llm-kitchen"');
     expect(html).toMatch(/Website<span class="visually-hidden"> for LLM Kitchen<\/span>/);
     expect(html).toContain('npm install llm-kitchen');
+    expect(html).toMatch(/<button[^>]*data-copy="npm install llm-kitchen"[^>]*hidden/);
     expect(html).toContain('card__meta');
   });
 

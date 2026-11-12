@@ -251,14 +251,59 @@ h2 {
 }
 
 .card__install {
-  display: block;
-  padding: 8px 12px;
-  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 4px 4px 12px;
   border-radius: 4px;
   background-color: #f2f2f2;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.875rem;
-  white-space: nowrap;
+
+  & code {
+    flex: 1;
+    padding: 4px 0;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+}
+
+.card__copy {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &:hover {
+    background-color: var(--ink);
+    color: var(--paper);
+  }
+
+  & svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.card__copied-icon,
+.card__copy[data-copied] .card__copy-icon {
+  display: none;
+}
+
+.card__copy[data-copied] .card__copied-icon {
+  display: block;
 }
 
 .card__links {

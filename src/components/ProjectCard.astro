@@ -72,7 +72,18 @@ const languageColor = (project.language && languageColors[project.language]) || 
     </ul>
   )}
 
-  {project.install && <code class="card__install">{project.install}</code>}
+  {project.install && (
+    <div class="card__install">
+      <code>{project.install}</code>
+      {/* Revealed by main.ts when the Clipboard API is available. */}
+      <button class="card__copy" type="button" data-copy={project.install} hidden>
+        <Icon name="content_copy" class="card__copy-icon" />
+        <Icon name="check" class="card__copied-icon" />
+        <span class="visually-hidden">Copy install command for {project.name}</span>
+      </button>
+      <span class="visually-hidden" aria-live="polite" data-copy-status></span>
+    </div>
+  )}
 
   <ul class="card__links">
     {project.links.map((link) => (
