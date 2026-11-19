@@ -56,7 +56,7 @@
     "eslint-plugin-prettier": "5.5.7",
     "firebase-tools": "15.36.0",
     "globals": "^17.14.0",
-    "prettier": "3.9.10",
+    "prettier": "3.10.1",
     "prettier-plugin-astro": "1.1.2",
     "prettier-plugin-package": "2.0.0",
     "sanitize-html": "2.18.2",
